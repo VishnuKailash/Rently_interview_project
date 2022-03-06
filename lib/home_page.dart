@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rently_map_project/route_map_page.dart';
 
 class HomePage extends StatelessWidget {
 
@@ -20,7 +21,9 @@ class HomePage extends StatelessWidget {
               SizedBox(height: 15,),
               Text(" Kochi → Coimbatore → Madurai → Munnar → Kochi",style: TextStyle(color: Colors.blueGrey,fontSize: 15,fontWeight: FontWeight.w500)),
               SizedBox(height: 20,),
-              MaterialButton(onPressed: (){},child: Text("Click Me",style: TextStyle(color: Colors.white),),color: Colors.blueAccent,
+              MaterialButton(
+                onPressed: ()=>Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=>RouteMapPage())),
+                child: Text("Click Me",style: TextStyle(color: Colors.white),),color: Colors.blueAccent,
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
               )
             ],
