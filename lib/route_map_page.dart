@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 class RouteMapPage extends StatefulWidget {
   @override
@@ -8,7 +7,7 @@ class RouteMapPage extends StatefulWidget {
 
 class _RouteMapPageState extends State<RouteMapPage> {
  GoogleMapController? googleMapController;
- CameraPosition cameraPosition=const CameraPosition(target: LatLng(9.931233,76.267303),zoom: 12);
+ CameraPosition cameraPosition=const CameraPosition(target: LatLng(9.931233,76.267303),zoom: 10);
 
  static  LatLng _center =  LatLng(9.931233,76.267303);
  final Set<Marker> _markers = {};
@@ -42,22 +41,45 @@ class _RouteMapPageState extends State<RouteMapPage> {
   print("Clicked");
    setState(() {
      _markers.add(Marker(
-       // This marker id can be anything that uniquely identifies each marker.
        markerId: MarkerId(_lastMapPosition.toString()),
-       //_lastMapPosition is any coordinate which should be your default
-       //position when map opens up
        position: _lastMapPosition,
        infoWindow: InfoWindow(
-         title: 'Really cool place',
-         snippet: '5 Star Rating',
+         title: 'Kochi',
+         snippet: 'Kerala',
        ),
        icon: BitmapDescriptor.defaultMarker,
 
      ));
+     _markers.add(Marker(
+       markerId: MarkerId(coimbatore.toString()),
+       position: coimbatore,
+       infoWindow: InfoWindow(
+         title: 'Coimbatore',
+         snippet: 'TamilNadu',
+       ),
+       icon: BitmapDescriptor.defaultMarkerWithHue(12),
+     ));
+     _markers.add(Marker(
+       markerId: MarkerId(madurai.toString()),
+       position: madurai,
+       infoWindow: InfoWindow(
+         title: 'Madurai',
+         snippet: 'TamilNadu',
+       ),
+       icon: BitmapDescriptor.defaultMarkerWithHue(12),
+     ));
+     _markers.add(Marker(
+       markerId: MarkerId(munnar.toString()),
+       position: munnar,
+       infoWindow: InfoWindow(
+         title: 'Munnar',
+         snippet: 'TamilNadu',
+       ),
+       icon: BitmapDescriptor.defaultMarkerWithHue(12),
+     ));
      _polyline.add(Polyline(
        polylineId: PolylineId(_lastMapPosition.toString()),
        visible: true,
-       //latlng is List<LatLng>
        points: polyLineCoordinates,
        color: Colors.blue,
      ));
